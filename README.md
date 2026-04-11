@@ -1,23 +1,56 @@
-## 👋 Bem vindos!
+## 👋 Hi, I'm Capu! | Olá, eu sou o Capu!
 
-<img src="https://github.com/DevCapu/DevCapu/blob/master/octocat.png" width="50%" align="right"/>
-Graduado em Ciência da Computação e atualmente estou cursando um MBA em Desenvolvimento Mobile. Sou apaixonado por tecnologia, vejo nela a possibilidade de melhorar a vida das pessoas além de uni-las. 
+<img src="https://github.com/DevCapu/DevCapu/blob/master/octocat.png" width="40%" align="right"/>
 
-Meu foco principal está voltado para o desenvolvimento mobile, com especialização nas plataformas Android e iOS, utilizando linguagens como Java, Kotlin e Swift. Minha expertise abrange algoritmos, estruturas de dados, bancos de dados e redes. Uma das minhas realizações foi liderar a migração de projetos do iOS para o Android, criando aplicativos desde o início do processo. Nos meus projetos, aplico práticas como TDD, Construção de Segurança, CI/CD, bem como um design voltado para a experiência móvel.
+**Senior Android Developer** focused on building software that actually improves people's lives — in health, education, and beyond.
 
-Também atuei como instrutor e criador de conteúdo Android, com foco em Jetpack Compose e testes no ambiente Android, influenciando positivamente milhares de estudantes. Além disso, participei do desenvolvimento e manutenção de funcionalidades escaláveis em aplicativos educacionais que abrangem codificação, idiomas, música e programação voltados para crianças. Analisei e auxiliei alunos em projetos de UX e frontend.
+**Desenvolvedor Android Sênior** com foco em criar software que realmente melhora a vida das pessoas — na saúde, educação e além.
 
+---
 
- <a href="https://github.com/DevCapu/rangao">Rangão</a><br>
- <a href="https://github.com/DevCapu/BeeHealthy">Bee Healthy</a>
+### 🤖 About me | Sobre mim
 
-Esses projetos representam bem o que eu quero como carreira, criar softwares que realmente possam melhorar o estilo de vida das pessoas melhorando a saúde física e psicológica.
+- 🎓 Computer Science degree + MBA in Mobile Development
+- 📱 Android specialist with experience in health & wellness and edtech products
+- 🧪 Strong advocate for testability, clean architecture and sustainable codebases
+- ✏️ I write poems on the side and enjoy conversations about philosophy and sociology
 
-  <ul>
-    <li> 💻 HTML, CSS e JS foi onde eu comecei a engatar com programação </li>
-    <li>🌱 Tenho estudado bastante sobre S.O.L.I.D, arquitetura de software e boas práticas.</li>
-    <li>📚 Amo conversar sobre sociologia e filosofia</li>
-    <li>✏️ Escrevo uns poemas</li>
-  </ul>
+---
 
-![Devcapu's github stats](https://github-readme-stats.vercel.app/api?username=devcapu&show_icons=true)
+### 🛠️ Tech Stack
+
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white)
+![Coroutines](https://img.shields.io/badge/Coroutines%20%2F%20Flow-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-0A0A0A?style=for-the-badge&logo=githubactions&logoColor=white)
+
+**Architecture:** MVVM · MVI · Clean Architecture · SOLID  
+**Testing:** Unit Tests · UI Tests (Espresso / Compose Testing)  
+**Tools:** Firebase · GitHub Actions · Hilt
+
+---
+
+### 📖 Currently Learning | Estudando agora
+
+Deepening my knowledge as a senior engineer — focused on what makes software scale and last.
+
+| Topic | Why |
+|-------|-----|
+| 🏛️ Architecture & Design Patterns | Writing code that's easier to evolve and maintain |
+| 🗂️ System Design | Thinking beyond the app — distributed systems, trade-offs |
+| 🧩 Algorithms & Data Structures | Sharpening fundamentals that never go out of style |
+| 🤖 AI | Understanding how to bring intelligence into mobile experiences |
+
+---
+
+### 📊 GitHub Stats
+
+![Devcapu's github stats](https://github-readme-stats.vercel.app/api?username=devcapu&show_icons=true&theme=tokyonight)
+
+---
+
+### 📫 Let's connect | Vamos conversar
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/SEU_PERFIL_AQUI)
