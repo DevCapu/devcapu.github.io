@@ -7,7 +7,13 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        grotesk: ["var(--font-space-grotesk)", "sans-serif"],
+        hanken: ["var(--font-hanken-grotesk)", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
+      },
+    },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("@tailwindcss/typography")],

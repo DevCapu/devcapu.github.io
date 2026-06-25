@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(git *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/blog)",
+      "Bash(curl -s http://localhost:3000/photos)",
+      "Bash(curl -s http://localhost:3000/about)",
+      "Skill(run)",
+      "Bash(python3 -c ' *)",
+      "mcp__visualize__show_widget"
+    ]
+  }
+}

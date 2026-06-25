@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --accent: oklch(0.78 0.14 55);
+  --accent-bright: oklch(0.80 0.14 55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: #0a0a0b;
+}
+
+::selection {
+  background: oklch(0.75 0.14 55 / 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222226;
+  border-radius: 6px;
+}
