@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { PostMeta } from "@/lib/posts";
 import type { PhotoMeta } from "@/lib/photos";
 import type { Project } from "@/content/projects";
+import { Lightbox } from "@/components/Lightbox";
 
 type FilterType = "tudo" | "fotos" | "vlogs" | "textos" | "android";
 
@@ -50,6 +51,7 @@ interface TimelineProps {
 
 export function Timeline({ posts, photos, projects }: TimelineProps) {
   const [filter, setFilter] = useState<FilterType>("tudo");
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   const items: TimelineItem[] = [
     ...photos.map((p): TimelineItem => ({
@@ -91,6 +93,9 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
     <div
       style={{ maxWidth: "760px", margin: "0 auto", padding: "72px 48px 88px" }}
     >
+      {lightboxSrc && (
+        <Lightbox src={lightboxSrc} alt="" onClose={() => setLightboxSrc(null)} />
+      )}
       <h1
         className="font-grotesk"
         style={{
@@ -276,54 +281,83 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
                     }}
                   >
                     {item.photos.slice(0, 2).map((photo, pi) => (
-                      <div
+                      <button
                         key={pi}
+                        type="button"
+                        onClick={() => setLightboxSrc(photo)}
                         style={{
                           aspectRatio: "1",
                           borderRadius: "8px",
-                          background:
-                            "repeating-linear-gradient(135deg,#18181b,#18181b 11px,#101012 11px,#101012 22px)",
+                          overflow: "hidden",
                           border: "1px solid rgba(255,255,255,0.06)",
-                          display: "flex",
-                          alignItems: "flex-end",
-                          padding: "9px",
+                          padding: 0,
+                          cursor: "zoom-in",
+                          display: "block",
                         }}
                       >
-                        <span
-                          className="font-mono"
-                          style={{ fontSize: "10px", color: "#6b6b70" }}
-                        >
-                          {photo
-                            .split("/")
-                            .pop()
-                            ?.replace(/\.[^.]+$/, "") ?? photo}
-                        </span>
-                      </div>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={photo}
+                          alt=""
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                        />
+                      </button>
                     ))}
                     {item.photos.length > 2 && (
-                      <div
+                      <button
+                        type="button"
+                        onClick={() => setLightboxSrc(item.photos![2])}
                         style={{
                           aspectRatio: "1",
                           borderRadius: "8px",
-                          background:
-                            "repeating-linear-gradient(135deg,#18181b,#18181b 11px,#101012 11px,#101012 22px)",
+                          overflow: "hidden",
                           border: "1px solid rgba(255,255,255,0.06)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          padding: 0,
+                          cursor: "zoom-in",
+                          position: "relative",
+                          display: "block",
                         }}
                       >
-                        <span
-                          className="font-grotesk"
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.photos[2]}
+                          alt=""
                           style={{
-                            fontWeight: 600,
-                            fontSize: "20px",
-                            color: "#f4f4f3",
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            display: "block",
                           }}
-                        >
-                          +{item.photos.length - 2}
-                        </span>
-                      </div>
+                        />
+                        {item.photos.length > 3 && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              inset: 0,
+                              background: "rgba(0,0,0,0.55)",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <span
+                              className="font-grotesk"
+                              style={{
+                                fontWeight: 600,
+                                fontSize: "20px",
+                                color: "#f4f4f3",
+                              }}
+                            >
+                              +{item.photos.length - 3}
+                            </span>
+                          </div>
+                        )}
+                      </button>
                     )}
                   </div>
                 )}
