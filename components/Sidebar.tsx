@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { features } from "@/lib/features";
 
 const navLinks = [
   { href: "/", label: "Início", index: "00" },
@@ -10,7 +11,7 @@ const navLinks = [
   { href: "/blog", label: "Textos", index: "03" },
   { href: "/projects", label: "Projetos", index: "04" },
   { href: "/about", label: "Sobre", index: "05" },
-];
+].filter((link) => link.href !== "/vlogs" || features.vlogs);
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -65,8 +66,10 @@ export function Sidebar() {
           margin: "34px 0 0",
         }}
       >
-        Desenvolvedor Android e capivara digital. Construo apps em Kotlin e
-        registro o caminho entre um commit e outro — fotos, vídeos e textos.
+        São registros do que gosto e do quero compartilhar com quem gosto.
+        O que você encontra aqui é uma mistura de filosofia, pessoas, lugares e tecnologia.
+        <br/><br/>
+        Continue construindo pontes.
       </p>
 
       <nav

@@ -6,6 +6,7 @@ import type { PostMeta } from "@/lib/posts";
 import type { PhotoMeta } from "@/lib/photos";
 import type { Project } from "@/content/projects";
 import { Lightbox } from "@/components/Lightbox";
+import { features } from "@/lib/features";
 
 type FilterType = "tudo" | "fotos" | "vlogs" | "textos" | "android";
 
@@ -15,7 +16,7 @@ const filters: { id: FilterType; label: string }[] = [
   { id: "vlogs", label: "Vlogs" },
   { id: "textos", label: "Textos" },
   { id: "android", label: "Android" },
-];
+].filter((f) => f.id !== "vlogs" || features.vlogs) as { id: FilterType; label: string }[];
 
 const ptMonths = [
   "jan","fev","mar","abr","mai","jun",

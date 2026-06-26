@@ -17,22 +17,24 @@ export function PhotoCard({ photo }: { photo: PhotoMeta }) {
         />
       )}
       <article className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
-        {photo.photos.map((src) => (
-          <button
-            key={src}
-            className="w-full block cursor-zoom-in"
-            onClick={() => setSelectedSrc(src)}
-            aria-label="Ver imagem maior"
-            type="button"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={src}
-              alt={photo.description}
-              className="w-full object-cover"
-            />
-          </button>
-        ))}
+        <div className={`grid ${photo.photos.length > 1 ? "grid-cols-2 gap-0.5" : "grid-cols-1"}`}>
+          {photo.photos.map((src) => (
+            <button
+              key={src}
+              className="w-full h-full block cursor-zoom-in"
+              onClick={() => setSelectedSrc(src)}
+              aria-label="Ver imagem maior"
+              type="button"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                alt={photo.description}
+                className="w-full h-full object-cover aspect-square sm:aspect-auto"
+              />
+            </button>
+          ))}
+        </div>
         <div className="p-3">
           {photo.title && (
             <p className="font-semibold text-gray-900 dark:text-gray-100 mb-1 text-sm">
