@@ -3,7 +3,7 @@ title: "Hello World"
 date: "2026-06-02"
 tags: ["meta"]
 excerpt: "My first post — why I started this blog and what to expect."
-published: true
+published: false
 ---
 
 Welcome to my blog! I've been meaning to start writing for a while, and today I finally did it.
