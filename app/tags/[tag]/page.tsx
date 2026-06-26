@@ -8,7 +8,11 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllTags().map((tag) => ({ tag }));
+  const tags = getAllTags();
+  if (tags.length === 0) {
+    return [{ tag: "dummy" }];
+  }
+  return tags.map((tag) => ({ tag }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

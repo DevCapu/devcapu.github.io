@@ -7,7 +7,11 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllNotes().map((note) => ({ slug: note.slug }));
+  const notes = getAllNotes();
+  if (notes.length === 0) {
+    return [{ slug: "dummy" }];
+  }
+  return notes.map((note) => ({ slug: note.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

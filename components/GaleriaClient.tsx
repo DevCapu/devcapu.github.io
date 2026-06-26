@@ -5,15 +5,7 @@ import type { PhotoMeta } from "@/lib/photos";
 
 const ACCENT = "oklch(0.78 0.14 55)";
 
-const FILTERS = [
-  { id: "todos", label: "Todos" },
-  { id: "pessoas", label: "Pessoas" },
-  { id: "urbano", label: "Urbano" },
-  { id: "natureza", label: "Natureza" },
-  { id: "cotidiano", label: "Cotidiano" },
-] as const;
 
-type FilterId = (typeof FILTERS)[number]["id"];
 
 const PT_MONTHS = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 
@@ -23,6 +15,8 @@ const TAG_GRADIENTS: Record<string, [string, string]> = {
   natureza:  ["#111a0c", "#0b100a"],
   cotidiano: ["#1c160e", "#12100a"],
   praia:     ["#0c0e1c", "#07080e"],
+  interior:  ["#1a120c", "#100b07"],
+  família:   ["#1d1215", "#120b0d"],
 };
 const DEFAULT_GRADIENT: [string, string] = ["#131313", "#0a0a0a"];
 
@@ -43,9 +37,18 @@ function formatDate(dateStr: string): string {
 }
 
 export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
-  const [filter, setFilter] = useState<FilterId>("todos");
+  const [filter, setFilter] = useState<string>("todos");
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [slide, setSlide] = useState(0);
+
+  const tags = Array.from(new Set(photos.map((p) => p.tag).filter((t): t is string => !!t)));
+  const filters = [
+    { id: "todos", label: "Todos" },
+    ...tags.map((tag) => ({
+      id: tag,
+      label: tag.charAt(0).toUpperCase() + tag.slice(1),
+    })),
+  ];
 
   const filtered = filter === "todos" ? photos : photos.filter((p) => p.tag === filter);
   const openAlbum = openSlug ? (photos.find((p) => p.slug === openSlug) ?? null) : null;
@@ -111,7 +114,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
 
             {/* Filter chips */}
             <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "28px" }}>
-              {FILTERS.map(({ id, label }) => (
+              {filters.map(({ id, label }) => (
                 <button
                   key={id}
                   onClick={() => setFilter(id)}

@@ -38,6 +38,15 @@ export function getAllNotes(): NoteMeta[] {
 
 export async function getNoteBySlug(slug: string): Promise<Note> {
   const fullPath = path.join(notesDirectory, `${slug}.md`);
+  if (!fs.existsSync(fullPath)) {
+    return {
+      slug,
+      title: "Placeholder",
+      description: "",
+      lastUpdated: "",
+      content: "",
+    };
+  }
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   const processed = await remark().use(html).process(content);

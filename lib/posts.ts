@@ -47,6 +47,18 @@ export function getAllPosts(): PostMeta[] {
 
 export async function getPostBySlug(slug: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
+  if (!fs.existsSync(fullPath)) {
+    return {
+      slug,
+      title: "Placeholder",
+      date: "",
+      tags: [],
+      excerpt: "",
+      readingTime: "",
+      published: false,
+      content: "",
+    };
+  }
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   const stats = readingTime(content);
