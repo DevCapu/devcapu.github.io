@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { PostMeta } from "@/lib/posts";
 import type { PhotoMeta } from "@/lib/photos";
 import type { Project } from "@/content/projects";
-import { Lightbox } from "@/components/Lightbox";
+import { Slideshow } from "@/components/Slideshow";
 import { features } from "@/lib/features";
 
 type FilterType = "tudo" | "fotos" | "vlogs" | "textos" | "android";
@@ -52,7 +52,7 @@ interface TimelineProps {
 
 export function Timeline({ posts, photos, projects }: TimelineProps) {
   const [filter, setFilter] = useState<FilterType>("tudo");
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [slideshow, setSlideshow] = useState<{ photos: string[]; index: number } | null>(null);
 
   const items: TimelineItem[] = [
     ...photos.map((p): TimelineItem => ({
@@ -94,8 +94,15 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
     <div
       style={{ maxWidth: "760px", margin: "0 auto", padding: "72px 48px 88px" }}
     >
-      {lightboxSrc && (
-        <Lightbox src={lightboxSrc} alt="" onClose={() => setLightboxSrc(null)} />
+      {slideshow && (
+        <Slideshow
+          photos={slideshow.photos}
+          slide={slideshow.index}
+          onClose={() => setSlideshow(null)}
+          onPrev={() => setSlideshow((s) => s && s.index > 0 ? { ...s, index: s.index - 1 } : s)}
+          onNext={() => setSlideshow((s) => s && s.index < s.photos.length - 1 ? { ...s, index: s.index + 1 } : s)}
+          onGoto={(i) => setSlideshow((s) => s ? { ...s, index: i } : s)}
+        />
       )}
       <h1
         className="font-grotesk"
@@ -285,7 +292,7 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
                       <button
                         key={pi}
                         type="button"
-                        onClick={() => setLightboxSrc(photo)}
+                        onClick={() => setSlideshow({ photos: item.photos!, index: pi })}
                         style={{
                           aspectRatio: "1",
                           borderRadius: "8px",
@@ -312,7 +319,7 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
                     {item.photos.length > 2 && (
                       <button
                         type="button"
-                        onClick={() => setLightboxSrc(item.photos![2])}
+                        onClick={() => setSlideshow({ photos: item.photos!, index: 2 })}
                         style={{
                           aspectRatio: "1",
                           borderRadius: "8px",
