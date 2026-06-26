@@ -11,6 +11,7 @@ export interface PhotoMeta {
   description: string;
   photos: string[];
   location?: string;
+  tag?: string;
   published: boolean;
 }
 
@@ -35,6 +36,7 @@ export function getAllPhotos(): PhotoMeta[] {
         description: data.description as string,
         photos: (data.photos as string[]) ?? [],
         location: data.location as string | undefined,
+        tag: data.tag as string | undefined,
         published: data.published !== false,
       };
     })
