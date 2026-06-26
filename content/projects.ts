@@ -9,11 +9,11 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "Personal Website",
+    name: "Rangão",
     description:
-      "This website — a blog, notes, and portfolio built with Next.js and deployed to GitHub Pages.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/devcapu/devcapu",
+      "Um site de gerenciamento de dieta, baseado nos alimentos que a pessoa tem em casa",
+    tech: ["PHP", "Laravel"],
+    githubUrl: "https://github.com/devcapu/rangao",
     featured: true,
   },
   // Add your Android projects here

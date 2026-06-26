@@ -9,7 +9,8 @@
       "Bash(curl -s http://localhost:3000/about)",
       "Skill(run)",
       "Bash(python3 -c ' *)",
-      "mcp__visualize__show_widget"
+      "mcp__visualize__show_widget",
+      "Bash(npx tsc *)"
     ]
   }
 }
