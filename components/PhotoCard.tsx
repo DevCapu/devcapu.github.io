@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { PhotoMeta } from "@/lib/photos";
 import { Lightbox } from "@/components/Lightbox";
+import { photoUrl } from "@/lib/media";
 
 export function PhotoCard({ photo }: { photo: PhotoMeta }) {
   const [selectedSrc, setSelectedSrc] = useState<string | null>(null);
@@ -22,14 +23,15 @@ export function PhotoCard({ photo }: { photo: PhotoMeta }) {
             <button
               key={src}
               className="w-full h-full block cursor-zoom-in"
-              onClick={() => setSelectedSrc(src)}
+              onClick={() => setSelectedSrc(photoUrl(src))}
               aria-label="Ver imagem maior"
               type="button"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={src}
+                src={photoUrl(src)}
                 alt={photo.description}
+                loading="lazy"
                 className="w-full h-full object-cover aspect-square sm:aspect-auto"
               />
             </button>

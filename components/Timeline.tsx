@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { photoUrl } from "@/lib/media";
 import type { PostMeta } from "@/lib/posts";
 import type { PhotoMeta } from "@/lib/photos";
 import type { Project } from "@/content/projects";
@@ -305,7 +306,7 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={photo}
+                          src={photoUrl(photo)}
                           alt=""
                           style={{
                             width: "100%",
@@ -333,7 +334,7 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={item.photos[2]}
+                          src={photoUrl(item.photos[2])}
                           alt=""
                           style={{
                             width: "100%",

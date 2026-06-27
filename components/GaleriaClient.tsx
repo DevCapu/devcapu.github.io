@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { PhotoMeta } from "@/lib/photos";
+import { photoUrl } from "@/lib/media";
 
 const ACCENT = "oklch(0.78 0.14 55)";
 
@@ -146,7 +147,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
                 {filtered.map((album, i) => {
                   const hasPhoto = album.photos.length > 0;
                   const cardBg: React.CSSProperties = hasPhoto
-                    ? { backgroundImage: `url(${album.photos[0]})`, backgroundSize: "cover", backgroundPosition: "center" }
+                    ? { backgroundImage: `url(${photoUrl(album.photos[0])})`, backgroundSize: "cover", backgroundPosition: "center" }
                     : { background: tagGradient(album.tag) };
                   const aspect = ASPECT_CYCLE[i % ASPECT_CYCLE.length];
 
@@ -233,7 +234,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
             {currentPhoto ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={currentPhoto}
+                src={photoUrl(currentPhoto)}
                 alt={albumName(openAlbum)}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
               />

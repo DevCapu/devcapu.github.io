@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { photoUrl } from "@/lib/media";
 
 const ACCENT = "oklch(0.78 0.14 55)";
 
@@ -115,7 +116,7 @@ export function Slideshow({ photos, title, description, slide, onClose, onPrev, 
         {current ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={current}
+            src={photoUrl(current)}
             alt={description ?? ""}
             style={{
               position: "absolute",
@@ -182,7 +183,7 @@ export function Slideshow({ photos, title, description, slide, onClose, onPrev, 
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={src}
+              src={photoUrl(src)}
               alt=""
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
