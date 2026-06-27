@@ -116,6 +116,7 @@ export function Slideshow({ photos, title, description, slide, onClose, onPrev, 
         {current ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
+            key={current}
             src={photoUrl(current)}
             alt={description ?? ""}
             style={{

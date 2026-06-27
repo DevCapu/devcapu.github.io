@@ -234,6 +234,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
             {currentPhoto ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
+                key={currentPhoto}
                 src={photoUrl(currentPhoto)}
                 alt={albumName(openAlbum)}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
