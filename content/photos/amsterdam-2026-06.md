@@ -9,6 +9,6 @@ photos:
   - "/photos/queimada-amsterdam.jpeg"
   - "/photos/sala-frankfurt.jpeg"
 location: "Amsterdam, NL"
-tag: urbano
+tag: viagem
 published: true
 ---

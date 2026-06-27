@@ -10,7 +10,12 @@
       "Skill(run)",
       "Bash(python3 -c ' *)",
       "mcp__visualize__show_widget",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "Bash(brew install *)",
+      "Bash(gh run *)",
+      "Bash(gh auth *)",
+      "Bash(xargs cat)"
     ]
   }
 }

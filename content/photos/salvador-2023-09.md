@@ -13,6 +13,6 @@ photos:
   - "/photos/salvador_8.jpeg"
   - "/photos/salvador_9.jpeg"
 location: "Salvador, BA"
-tag: praia
+tag: viagem
 published: true
 ---
