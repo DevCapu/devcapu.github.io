@@ -15,6 +15,9 @@ export interface PostMeta {
   excerpt: string;
   readingTime: string;
   published: boolean;
+  isExternal?: boolean;
+  externalUrl?: string;
+  siteName?: string;
 }
 
 export interface Post extends PostMeta {
@@ -39,6 +42,9 @@ export function getAllPosts(): PostMeta[] {
         excerpt: data.excerpt as string,
         readingTime: stats.text,
         published: data.published !== false,
+        isExternal: data.isExternal === true,
+        externalUrl: data.externalUrl as string | undefined,
+        siteName: data.siteName as string | undefined,
       };
     })
     .filter((post) => post.published)

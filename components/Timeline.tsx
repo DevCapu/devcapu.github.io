@@ -38,6 +38,7 @@ interface TimelineItem {
   date: string;
   title: string;
   href: string;
+  isExternal?: boolean;
   excerpt?: string;
   description?: string;
   photos?: string[];
@@ -68,7 +69,8 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
       type: "texto",
       date: p.date,
       title: p.title,
-      href: `/blog/${p.slug}`,
+      href: p.isExternal ? (p.externalUrl ?? "#") : `/blog/${p.slug}`,
+      isExternal: p.isExternal,
       excerpt: p.excerpt,
       readingTime: p.readingTime,
     })),
@@ -209,8 +211,11 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
               >
                 {item.type === "foto" &&
                   `galeria · ${formatDate(item.date, "foto")}`}
-                {item.type === "texto" &&
-                  `leitura ${item.readingTime?.replace(" read", "") ?? ""} · ${formatDate(item.date, "texto")}`}
+                {item.type === "texto" && (
+                  item.isExternal
+                    ? formatDate(item.date, "texto")
+                    : `leitura ${item.readingTime?.replace(" read", "") ?? ""} · ${formatDate(item.date, "texto")}`
+                )}
                 {item.type === "android" && formatDate(item.date, "android")}
               </span>
             </div>
@@ -240,18 +245,25 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
                 >
                   {item.excerpt}
                 </p>
-                <Link
-                  href={item.href}
-                  className="font-hanken"
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    color: "var(--accent-bright)",
-                    textDecoration: "none",
-                  }}
-                >
-                  Continuar lendo →
-                </Link>
+                {item.isExternal ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-hanken"
+                    style={{ fontSize: "14px", fontWeight: 600, color: "var(--accent-bright)", textDecoration: "none" }}
+                  >
+                    Ler artigo ↗
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="font-hanken"
+                    style={{ fontSize: "14px", fontWeight: 600, color: "var(--accent-bright)", textDecoration: "none" }}
+                  >
+                    Continuar lendo →
+                  </Link>
+                )}
               </>
             )}
 
