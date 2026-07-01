@@ -344,21 +344,16 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
               </span>
             }
           />
-          <div style={{ marginTop: "22px", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "28px" }}>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "#5a5a60", marginBottom: "10px" }}>vlogs · {formatDate(heroVlog.date)}</div>
-              <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "29px", letterSpacing: "-0.025em", color: "#f4f4f3", margin: "0 0 10px", lineHeight: 1.1 }}>
-                {heroVlog.title}
-              </h2>
-              {heroVlog.description && (
-                <p style={{ fontFamily: "'Hanken Grotesk', sans-serif", fontSize: "15px", lineHeight: 1.65, color: "#9a9aa0", margin: 0, maxWidth: "520px" }}>
-                  {heroVlog.description}
-                </p>
-              )}
-            </div>
-            <a href="https://youtube.com/@devcapu" target="_blank" rel="noopener noreferrer" style={{ ...ytLinkStyle, marginTop: "36px" }}>
-              ↗ YouTube
-            </a>
+          <div style={{ marginTop: "22px" }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "#5a5a60", marginBottom: "10px" }}>vlogs · {formatDate(heroVlog.date)}</div>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "29px", letterSpacing: "-0.025em", color: "#f4f4f3", margin: "0 0 10px", lineHeight: 1.1 }}>
+              {heroVlog.title}
+            </h2>
+            {heroVlog.description && (
+              <p style={{ fontFamily: "'Hanken Grotesk', sans-serif", fontSize: "15px", lineHeight: 1.65, color: "#9a9aa0", margin: 0, maxWidth: "520px" }}>
+                {heroVlog.description}
+              </p>
+            )}
           </div>
         </div>
       )}
