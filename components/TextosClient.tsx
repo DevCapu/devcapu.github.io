@@ -5,8 +5,8 @@ import type { PostMeta } from "@/lib/posts";
 
 type Filter = "todos" | "aqui" | "externos";
 
-const ACCENT = "oklch(0.78 0.14 55)";
-const ACCENT_BRIGHT = "oklch(0.80 0.14 55)";
+const ACCENT = "oklch(0.76 0.20 142)";
+const ACCENT_BRIGHT = "oklch(0.80 0.20 142)";
 const PT_MONTHS = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 
 function formatDate(dateStr: string): string {
@@ -54,7 +54,7 @@ export function TextosClient({ posts }: { posts: PostMeta[] }) {
   }
 
   return (
-    <div style={{ maxWidth: "780px", margin: "0 auto", padding: "64px 40px 88px" }}>
+    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
 
       {/* PAGE HEADER */}
       <div style={{ marginBottom: "34px" }}>
@@ -96,7 +96,7 @@ export function TextosClient({ posts }: { posts: PostMeta[] }) {
               style={{ display: "block", padding: "32px 0", borderTop: "1px solid rgba(255,255,255,0.08)", textDecoration: "none" }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "11px", marginBottom: "13px" }}>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.14em", textTransform: "uppercase", color: ACCENT, border: "1px solid oklch(0.78 0.14 55 / 0.35)", padding: "4px 9px", borderRadius: "999px" }}>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.14em", textTransform: "uppercase", color: ACCENT, border: "1px solid oklch(0.76 0.20 142 / 0.35)", padding: "4px 9px", borderRadius: "999px" }}>
                   texto
                 </span>
                 <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", color: "#76767c" }}>

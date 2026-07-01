@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import type { PhotoMeta } from "@/lib/photos";
 import { photoUrl } from "@/lib/media";
 
-const ACCENT = "oklch(0.78 0.14 55)";
+const ACCENT = "oklch(0.76 0.20 142)";
 
 
 
@@ -99,9 +99,9 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
       {/* ── GRID VIEW ── */}
       {!openAlbum && (
         <div style={{ height: "100%", overflowY: "auto" }}>
-          <div style={{ padding: "40px 36px 72px", maxWidth: "1080px", margin: "0 auto" }}>
+          <div style={{ padding: "64px 40px 88px", maxWidth: "820px", margin: "0 auto" }}>
 
-            <div style={{ marginBottom: "26px" }}>
+            <div style={{ marginBottom: "28px" }}>
               <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "9px", letterSpacing: "0.24em", color: ACCENT, marginBottom: "10px" }}>
                 01 — GALERIA
               </div>
@@ -166,7 +166,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
                         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.08) 48%,transparent 100%)" }} />
 
                         {/* Tag */}
-                        <div style={{ position: "absolute", top: "10px", left: "10px", fontFamily: "'JetBrains Mono',monospace", fontSize: "8px", letterSpacing: "0.12em", textTransform: "uppercase", color: ACCENT, background: "rgba(0,0,0,0.72)", border: "1px solid oklch(0.78 0.14 55 / 0.28)", padding: "3px 8px", borderRadius: "3px" }}>
+                        <div style={{ position: "absolute", top: "10px", left: "10px", fontFamily: "'JetBrains Mono',monospace", fontSize: "8px", letterSpacing: "0.12em", textTransform: "uppercase", color: ACCENT, background: "rgba(0,0,0,0.72)", border: "1px solid oklch(0.76 0.20 142 / 0.28)", padding: "3px 8px", borderRadius: "3px" }}>
                           {album.tag ?? "foto"}
                         </div>
 

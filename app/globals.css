@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --accent: oklch(0.78 0.14 55);
-  --accent-bright: oklch(0.80 0.14 55);
+  --accent: oklch(0.76 0.20 142);
+  --accent-bright: oklch(0.80 0.20 142);
 }
 
 * {
@@ -21,7 +21,7 @@ body {
 }
 
 ::selection {
-  background: oklch(0.75 0.14 55 / 0.3);
+  background: oklch(0.76 0.20 142 / 0.3);
 }
 
 ::-webkit-scrollbar {

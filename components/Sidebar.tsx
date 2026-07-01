@@ -57,6 +57,15 @@ export function Sidebar() {
         </span>
       </div>
 
+      <div
+        style={{
+          marginTop: "14px",
+          width: "100%",
+          height: "1px",
+          background: "linear-gradient(90deg, var(--accent), transparent)",
+        }}
+      />
+
       <p
         className="font-hanken"
         style={{

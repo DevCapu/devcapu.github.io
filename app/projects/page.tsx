@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Projects" };
 
 export default function ProjectsPage() {
   return (
-    <div style={{ padding: "36px 30px 60px", maxWidth: "780px" }}>
+    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
       {/* Header */}
       <div style={{ marginBottom: "22px" }}>
         <div
@@ -14,7 +14,7 @@ export default function ProjectsPage() {
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "9px",
             letterSpacing: "0.22em",
-            color: "oklch(0.78 0.14 55)",
+            color: "oklch(0.76 0.20 142)",
             marginBottom: "8px",
           }}
         >

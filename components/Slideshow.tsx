@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { photoUrl } from "@/lib/media";
 
-const ACCENT = "oklch(0.78 0.14 55)";
+const ACCENT = "oklch(0.76 0.20 142)";
 
 export interface SlideshowProps {
   photos: string[];

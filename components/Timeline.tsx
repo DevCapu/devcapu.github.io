@@ -174,7 +174,7 @@ export function Timeline({ posts, photos, vlogs, projects }: TimelineProps) {
 
   return (
     <div
-      style={{ maxWidth: "760px", margin: "0 auto", padding: "72px 48px 88px" }}
+      style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}
     >
       {playingVlog && playingVlog.streamId && (
         <VideoModal
@@ -285,7 +285,7 @@ export function Timeline({ posts, photos, vlogs, projects }: TimelineProps) {
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   color: "var(--accent)",
-                  border: "1px solid oklch(0.78 0.14 55 / 0.35)",
+                  border: "1px solid oklch(0.76 0.20 142 / 0.35)",
                   padding: "4px 9px",
                   borderRadius: "999px",
                 }}
