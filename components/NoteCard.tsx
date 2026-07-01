@@ -3,15 +3,43 @@ import type { NoteMeta } from "@/lib/notes";
 
 export function NoteCard({ note }: { note: NoteMeta }) {
   return (
-    <Link href={`/notes/${note.slug}`} className="group block">
-      <article className="border border-gray-200 dark:border-gray-800 rounded-lg p-5 h-full hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
-        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">
+    <Link href={`/notes/${note.slug}`} style={{ textDecoration: "none" }}>
+      <article
+        style={{
+          height: "100%",
+          padding: "18px",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: "14px",
+          background: "#111113",
+        }}
+      >
+        <h3
+          className="font-grotesk"
+          style={{
+            fontWeight: 600,
+            fontSize: "18px",
+            letterSpacing: "-0.02em",
+            color: "#f4f4f3",
+            margin: "0 0 6px",
+          }}
+        >
           {note.title}
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-500 mb-3 leading-relaxed">
+        <p
+          className="font-hanken"
+          style={{
+            fontSize: "14px",
+            lineHeight: 1.5,
+            color: "#9a9aa0",
+            margin: "0 0 14px",
+          }}
+        >
           {note.description}
         </p>
-        <p className="text-xs text-gray-400 dark:text-gray-600">
+        <p
+          className="font-mono"
+          style={{ fontSize: "12px", color: "#76767c", margin: 0 }}
+        >
           Updated {note.lastUpdated}
         </p>
       </article>

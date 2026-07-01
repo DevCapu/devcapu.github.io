@@ -23,18 +23,45 @@ export default function TagPage({ params }: Props) {
   const posts = getPostsByTag(params.tag);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
       <Link
         href="/blog"
-        className="text-sm text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors mb-8 inline-block"
+        className="font-mono"
+        style={{
+          fontSize: "11px",
+          color: "#9a9aa0",
+          textDecoration: "none",
+          marginBottom: "32px",
+          display: "inline-block",
+        }}
       >
-        ← Blog
+        ← textos
       </Link>
-      <h1 className="text-2xl font-bold mb-1">#{params.tag}</h1>
-      <p className="text-sm text-gray-400 dark:text-gray-600 mb-10">
-        {posts.length} post{posts.length !== 1 ? "s" : ""}
-      </p>
-      <div className="space-y-10">
+
+      {/* Header */}
+      <div style={{ marginBottom: "34px" }}>
+        <h1
+          className="font-grotesk"
+          style={{
+            fontWeight: 600,
+            fontSize: "42px",
+            lineHeight: 1.06,
+            letterSpacing: "-0.03em",
+            color: "#f4f4f3",
+            margin: "0 0 10px",
+          }}
+        >
+          #{params.tag}
+        </h1>
+        <p
+          className="font-mono"
+          style={{ fontSize: "12px", color: "#76767c", margin: 0 }}
+        >
+          {posts.length} post{posts.length !== 1 ? "s" : ""}
+        </p>
+      </div>
+
+      <div>
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}

@@ -23,26 +23,46 @@ export default async function NotePage({ params }: Props) {
   const note = await getNoteBySlug(params.slug);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
       <Link
         href="/notes"
-        className="text-sm text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors mb-8 inline-block"
+        className="font-mono"
+        style={{
+          fontSize: "11px",
+          color: "#9a9aa0",
+          textDecoration: "none",
+          marginBottom: "32px",
+          display: "inline-block",
+        }}
       >
-        ← Notes
+        ← notes
       </Link>
 
       <article>
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight">
+        <header style={{ marginBottom: "34px" }}>
+          <h1
+            className="font-grotesk"
+            style={{
+              fontWeight: 600,
+              fontSize: "36px",
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+              color: "#f4f4f3",
+              margin: "0 0 14px",
+            }}
+          >
             {note.title}
           </h1>
-          <p className="text-sm text-gray-400 dark:text-gray-600">
+          <p
+            className="font-mono"
+            style={{ fontSize: "12px", color: "#76767c", margin: 0 }}
+          >
             Last updated {note.lastUpdated}
           </p>
         </header>
 
         <div
-          className="prose prose-gray dark:prose-invert max-w-none"
+          className="prose prose-invert max-w-none font-hanken"
           dangerouslySetInnerHTML={{ __html: note.content }}
         />
       </article>
