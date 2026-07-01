@@ -1,3 +1,3 @@
 export const features = {
-  vlogs: false,
+  vlogs: true,
 } as const;

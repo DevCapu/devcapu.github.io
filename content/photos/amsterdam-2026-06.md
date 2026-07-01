@@ -1,7 +1,7 @@
 ---
-date: "2026-06-15"
+date: "2025-01-10"
 title: "Frankfurt & Amsterdam"
-description: "Algumas fotos na Alemanha e na Holanda."
+description: "Algumas fotos usando câmera analógica na Alemanha e na Holanda."
 photos:
   - "/photos/amsterdam-street-art.jpeg"
   - "/photos/lua-frankfurt.jpeg"

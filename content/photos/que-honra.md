@@ -6,6 +6,7 @@ photos:
   - "/photos/que-honra/donl.jpeg"
   - "/photos/que-honra/sant_1.jpeg"
   - "/photos/que-honra/manu.jpeg"
+  - "/photos/que-honra/nego_gallo.jpeg"
   - "/photos/que-honra/sant_2.jpeg"
   - "/photos/que-honra/sant_3.jpeg"
 location: "São Paulo, SP"

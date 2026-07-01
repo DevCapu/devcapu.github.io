@@ -1,13 +1,75 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { photoUrl } from "@/lib/media";
+import { photoUrl, streamConfigured, streamThumbnailUrl, streamIframeUrl } from "@/lib/media";
 import type { PostMeta } from "@/lib/posts";
 import type { PhotoMeta } from "@/lib/photos";
+import type { VlogMeta } from "@/lib/vlogs";
 import type { Project } from "@/content/projects";
 import { Slideshow } from "@/components/Slideshow";
 import { features } from "@/lib/features";
+
+function VideoModal({ streamId, title, vertical = false, onClose }: {
+  streamId: string;
+  title: string;
+  vertical?: boolean;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handler);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handler);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 100,
+        background: "rgba(5,5,6,0.9)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: "32px",
+      }}
+    >
+      <button
+        onClick={onClose}
+        aria-label="Fechar"
+        style={{
+          position: "absolute", top: 18, right: 22,
+          background: "none", border: "none", cursor: "pointer",
+          color: "#f4f4f3", fontSize: 34, lineHeight: 1,
+        }}
+      >
+        &times;
+      </button>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "relative",
+          width: vertical ? "min(420px, 90vw)" : "min(960px, 92vw)",
+          aspectRatio: vertical ? "9 / 16" : "16 / 9",
+          maxHeight: "88vh",
+          borderRadius: 14,
+          overflow: "hidden",
+          background: "#000",
+        }}
+      >
+        <iframe
+          src={`${streamIframeUrl(streamId)}?autoplay=true`}
+          title={title}
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+          allowFullScreen
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+        />
+      </div>
+    </div>
+  );
+}
 
 type FilterType = "tudo" | "fotos" | "vlogs" | "textos" | "android";
 
@@ -44,17 +106,23 @@ interface TimelineItem {
   photos?: string[];
   tech?: string[];
   readingTime?: string;
+  duration?: string;
+  vlogType?: string;
+  bg?: string;
+  streamId?: string;
 }
 
 interface TimelineProps {
   posts: PostMeta[];
   photos: PhotoMeta[];
+  vlogs: VlogMeta[];
   projects: Project[];
 }
 
-export function Timeline({ posts, photos, projects }: TimelineProps) {
+export function Timeline({ posts, photos, vlogs, projects }: TimelineProps) {
   const [filter, setFilter] = useState<FilterType>("tudo");
   const [slideshow, setSlideshow] = useState<{ photos: string[]; index: number } | null>(null);
+  const [playingVlog, setPlayingVlog] = useState<TimelineItem | null>(null);
 
   const items: TimelineItem[] = [
     ...photos.map((p): TimelineItem => ({
@@ -64,6 +132,17 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
       href: "/photos",
       description: p.description,
       photos: p.photos,
+    })),
+    ...vlogs.map((v): TimelineItem => ({
+      type: "vlog",
+      date: v.date,
+      title: v.title,
+      href: "/vlogs",
+      description: v.description,
+      duration: v.duration,
+      vlogType: v.type,
+      bg: v.bg,
+      streamId: v.streamId,
     })),
     ...posts.map((p): TimelineItem => ({
       type: "texto",
@@ -97,6 +176,14 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
     <div
       style={{ maxWidth: "760px", margin: "0 auto", padding: "72px 48px 88px" }}
     >
+      {playingVlog && playingVlog.streamId && (
+        <VideoModal
+          streamId={playingVlog.streamId}
+          title={playingVlog.title}
+          vertical={playingVlog.vlogType === "short"}
+          onClose={() => setPlayingVlog(null)}
+        />
+      )}
       {slideshow && (
         <Slideshow
           photos={slideshow.photos}
@@ -211,6 +298,8 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
               >
                 {item.type === "foto" &&
                   `galeria · ${formatDate(item.date, "foto")}`}
+                {item.type === "vlog" &&
+                  `${item.duration} · ${formatDate(item.date, "foto")}`}
                 {item.type === "texto" && (
                   item.isExternal
                     ? formatDate(item.date, "texto")
@@ -382,6 +471,59 @@ export function Timeline({ posts, photos, projects }: TimelineProps) {
                     )}
                   </div>
                 )}
+              </>
+            )}
+
+            {item.type === "vlog" && (
+              <>
+                <h2
+                  className="font-grotesk"
+                  style={{ fontWeight: 600, fontSize: "27px", letterSpacing: "-0.02em", color: "#f4f4f3", margin: "0 0 8px" }}
+                >
+                  {item.title}
+                </h2>
+                {item.description && (
+                  <p className="font-hanken" style={{ fontSize: "15px", lineHeight: 1.6, color: "#9a9aa0", margin: 0 }}>
+                    {item.description}
+                  </p>
+                )}
+                <button
+                  onClick={() => item.streamId && streamConfigured() ? setPlayingVlog(item) : undefined}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "16/9",
+                    borderRadius: "10px",
+                    marginTop: "18px",
+                    background: item.streamId && streamConfigured()
+                      ? `center/cover no-repeat url("${streamThumbnailUrl(item.streamId)}")`
+                      : item.bg,
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    padding: 0,
+                    cursor: item.streamId && streamConfigured() ? "pointer" : "default",
+                  }}
+                >
+                  <div style={{
+                    width: "60px", height: "60px", borderRadius: "50%",
+                    background: "rgba(10,10,11,0.5)",
+                    border: "1.5px solid rgba(255,255,255,0.45)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <div style={{
+                      width: 0, height: 0,
+                      borderLeft: "15px solid #f4f4f3",
+                      borderTop: "10px solid transparent",
+                      borderBottom: "10px solid transparent",
+                      marginLeft: "4px",
+                    }} />
+                  </div>
+                </button>
+                <Link href="/vlogs" className="font-hanken" style={{ display: "inline-block", marginTop: "16px", fontSize: "14px", fontWeight: 600, color: "var(--accent-bright)", textDecoration: "none" }}>
+                  Assistir vídeos →
+                </Link>
               </>
             )}
 

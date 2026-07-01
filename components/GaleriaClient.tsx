@@ -99,7 +99,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
       {/* ── GRID VIEW ── */}
       {!openAlbum && (
         <div style={{ height: "100%", overflowY: "auto" }}>
-          <div style={{ padding: "40px 36px 72px", maxWidth: "1080px" }}>
+          <div style={{ padding: "40px 36px 72px", maxWidth: "1080px", margin: "0 auto" }}>
 
             <div style={{ marginBottom: "26px" }}>
               <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "9px", letterSpacing: "0.24em", color: ACCENT, marginBottom: "10px" }}>
