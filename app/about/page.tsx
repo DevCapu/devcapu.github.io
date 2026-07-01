@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = { title: "Sobre" };
 
 const skills = [
   "Android",
@@ -14,39 +14,60 @@ const skills = [
   "Mockk",
 ];
 
+const sectionLabelStyle: React.CSSProperties = {
+  fontSize: "11px",
+  letterSpacing: "0.18em",
+  textTransform: "uppercase",
+  color: "#5a5a60",
+  marginBottom: "16px",
+};
+
+const bodyTextStyle: React.CSSProperties = {
+  fontSize: "16px",
+  lineHeight: 1.7,
+  color: "#b4b4b9",
+  margin: "0 0 16px",
+};
+
+const accentLinkStyle: React.CSSProperties = {
+  color: "var(--accent-bright)",
+  fontWeight: 600,
+  textDecoration: "none",
+};
+
 export default function AboutPage() {
   return (
     <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
       {/* Header */}
-      <div style={{ marginBottom: "22px" }}>
+      <div style={{ marginBottom: "34px" }}>
         <div
+          className="font-mono"
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "9px",
-            letterSpacing: "0.22em",
-            color: "oklch(0.76 0.20 142)",
-            marginBottom: "8px",
+            fontSize: "11px",
+            letterSpacing: "0.18em",
+            color: "var(--accent)",
+            marginBottom: "12px",
           }}
         >
           05 — SOBRE
         </div>
         <h1
+          className="font-grotesk"
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
             fontWeight: 600,
-            fontSize: "30px",
+            fontSize: "42px",
             lineHeight: 1.06,
             letterSpacing: "-0.03em",
             color: "#f4f4f3",
-            margin: "0 0 6px",
+            margin: "0 0 10px",
           }}
         >
-          About
+          Sobre
         </h1>
         <p
+          className="font-hanken"
           style={{
-            fontFamily: "'Hanken Grotesk', sans-serif",
-            fontSize: "13px",
+            fontSize: "16px",
             lineHeight: 1.6,
             color: "#9a9aa0",
             margin: 0,
@@ -56,17 +77,19 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <div className="prose prose-gray dark:prose-invert max-w-none mb-12">
-        <p>
-          Hi! I&apos;m <strong>Felipe Moreno Borges</strong>, an Android
-          Software Engineer based in São Paulo, Brazil.
+      <div className="font-hanken" style={{ marginBottom: "48px" }}>
+        <p style={bodyTextStyle}>
+          Hi! I&apos;m{" "}
+          <strong style={{ color: "#f4f4f3" }}>Felipe Moreno Borges</strong>,
+          an Android Software Engineer based in São Paulo, Brazil.
         </p>
-        <p>
+        <p style={{ ...bodyTextStyle, marginBottom: 0 }}>
           I work as an Android Engineer at{" "}
           <a
             href="https://www.zup.com.br"
             target="_blank"
             rel="noopener noreferrer"
+            style={accentLinkStyle}
           >
             Zup Innovation
           </a>
@@ -74,15 +97,22 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <section className="mb-10">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600 mb-4">
+      <section style={{ marginBottom: "48px" }}>
+        <h2 className="font-mono" style={sectionLabelStyle}>
           Technologies
         </h2>
-        <div className="flex flex-wrap gap-2">
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "9px" }}>
           {skills.map((skill) => (
             <span
               key={skill}
-              className="text-sm px-3 py-1 rounded-full border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300"
+              className="font-mono"
+              style={{
+                fontSize: "12px",
+                padding: "7px 14px",
+                borderRadius: "999px",
+                border: "1px solid rgba(255,255,255,0.12)",
+                color: "#9a9aa0",
+              }}
             >
               {skill}
             </span>
@@ -91,31 +121,34 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600 mb-4">
+        <h2 className="font-mono" style={sectionLabelStyle}>
           Get in Touch
         </h2>
-        <div className="flex flex-col gap-2">
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <a
             href="mailto:felipe.b2014@gmail.com"
-            className="text-sm text-blue-600 dark:text-blue-400 hover:underline w-fit"
+            className="font-mono"
+            style={{ fontSize: "12px", color: "#9a9aa0", textDecoration: "none", width: "fit-content" }}
           >
-            felipe.b2014@gmail.com
+            ↗ felipe.b2014@gmail.com
           </a>
           <a
             href="https://github.com/devcapu"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-blue-600 dark:text-blue-400 hover:underline w-fit"
+            className="font-mono"
+            style={{ fontSize: "12px", color: "#9a9aa0", textDecoration: "none", width: "fit-content" }}
           >
-            github.com/devcapu
+            ↗ github.com/devcapu
           </a>
           <a
             href="https://linkedin.com/in/devcapu"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-blue-600 dark:text-blue-400 hover:underline w-fit"
+            className="font-mono"
+            style={{ fontSize: "12px", color: "#9a9aa0", textDecoration: "none", width: "fit-content" }}
           >
-            linkedin.com/in/devcapu
+            ↗ linkedin.com/in/devcapu
           </a>
         </div>
       </section>

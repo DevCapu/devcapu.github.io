@@ -23,31 +23,68 @@ export default async function PostPage({ params }: Props) {
   const post = await getPostBySlug(params.slug);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
       <Link
         href="/blog"
-        className="text-sm text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors mb-8 inline-block"
+        className="font-mono"
+        style={{
+          fontSize: "11px",
+          color: "#9a9aa0",
+          textDecoration: "none",
+          marginBottom: "32px",
+          display: "inline-block",
+        }}
       >
-        ← Blog
+        ← textos
       </Link>
 
       <article>
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3 leading-tight">
+        <header style={{ marginBottom: "34px" }}>
+          <h1
+            className="font-grotesk"
+            style={{
+              fontWeight: 600,
+              fontSize: "36px",
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+              color: "#f4f4f3",
+              margin: "0 0 14px",
+            }}
+          >
             {post.title}
           </h1>
-          <div className="flex items-center gap-3 text-sm text-gray-400 dark:text-gray-600 mb-4">
+          <div
+            className="font-mono"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              fontSize: "12px",
+              color: "#76767c",
+              marginBottom: post.tags.length > 0 ? "16px" : 0,
+            }}
+          >
             <span>{post.date}</span>
             <span>·</span>
             <span>{post.readingTime}</span>
           </div>
           {post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
               {post.tags.map((tag) => (
                 <Link
                   key={tag}
                   href={`/tags/${tag}`}
-                  className="text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="font-mono"
+                  style={{
+                    fontSize: "10px",
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "var(--accent)",
+                    border: "1px solid oklch(0.76 0.20 142 / 0.35)",
+                    padding: "4px 9px",
+                    borderRadius: "999px",
+                    textDecoration: "none",
+                  }}
                 >
                   {tag}
                 </Link>
@@ -57,7 +94,7 @@ export default async function PostPage({ params }: Props) {
         </header>
 
         <div
-          className="prose prose-gray dark:prose-invert max-w-none"
+          className="prose prose-invert max-w-none font-hanken"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
