@@ -101,14 +101,14 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
         <div style={{ height: "100%", overflowY: "auto" }}>
           <div style={{ padding: "64px 40px 88px", maxWidth: "820px", margin: "0 auto" }}>
 
-            <div style={{ marginBottom: "28px" }}>
-              <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "9px", letterSpacing: "0.24em", color: ACCENT, marginBottom: "10px" }}>
+            <div style={{ marginBottom: "34px" }}>
+              <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "11px", letterSpacing: "0.18em", color: ACCENT, marginBottom: "12px" }}>
                 01 — GALERIA
               </div>
-              <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: "32px", lineHeight: 1.05, letterSpacing: "-0.03em", color: "#f4f4f3", margin: "0 0 7px" }}>
+              <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: "42px", lineHeight: 1.06, letterSpacing: "-0.03em", color: "#f4f4f3", margin: "0 0 10px" }}>
                 Arquivo Visual
               </h1>
-              <p style={{ fontFamily: "'Hanken Grotesk',sans-serif", fontSize: "14px", lineHeight: 1.6, color: "#9a9aa0", margin: 0 }}>
+              <p style={{ fontFamily: "'Hanken Grotesk',sans-serif", fontSize: "16px", lineHeight: 1.6, color: "#9a9aa0", margin: 0 }}>
                 Álbuns por tema, ideia ou sensação — nem sempre um lugar.
               </p>
             </div>
