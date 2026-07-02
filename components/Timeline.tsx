@@ -196,7 +196,7 @@ export function Timeline({ posts, photos, vlogs, projects }: TimelineProps) {
       <PageHeader
         kicker="00 — INÍCIO"
         title="Ideias que viram coisa."
-        subtitle="Aqui eu junto algumas fotos, vídeos, textos e os apps que construo, tudo num lugar só."
+        subtitle="Aqui eu junto algumas fotos, vídeos, textos e os apps que construo tudo num lugar só."
       />
 
       <div
