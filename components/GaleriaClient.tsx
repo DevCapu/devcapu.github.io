@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import type { PhotoMeta } from "@/lib/photos";
 import { photoUrl } from "@/lib/media";
+import { PageHeader, pageContainerStyle } from "@/components/PageHeader";
 
 const ACCENT = "oklch(0.76 0.20 142)";
 
@@ -99,19 +100,13 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
       {/* ── GRID VIEW ── */}
       {!openAlbum && (
         <div style={{ height: "100%", overflowY: "auto" }}>
-          <div style={{ padding: "64px 40px 88px", maxWidth: "820px", margin: "0 auto" }}>
+          <div style={pageContainerStyle}>
 
-            <div style={{ marginBottom: "34px" }}>
-              <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "11px", letterSpacing: "0.18em", color: ACCENT, marginBottom: "12px" }}>
-                01 — GALERIA
-              </div>
-              <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: "42px", lineHeight: 1.06, letterSpacing: "-0.03em", color: "#f4f4f3", margin: "0 0 10px" }}>
-                Arquivo Visual
-              </h1>
-              <p style={{ fontFamily: "'Hanken Grotesk',sans-serif", fontSize: "16px", lineHeight: 1.6, color: "#9a9aa0", margin: 0 }}>
-                Álbuns por tema, ideia ou sensação — nem sempre um lugar.
-              </p>
-            </div>
+            <PageHeader
+              kicker="01 — GALERIA"
+              title="Arquivo Visual"
+              subtitle="Álbuns por tema, ideia ou sensação — nem sempre um lugar."
+            />
 
             {/* Filter chips */}
             <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "28px" }}>

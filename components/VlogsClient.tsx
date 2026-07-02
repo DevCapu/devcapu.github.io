@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { VlogMeta } from "@/lib/vlogs";
 import { streamConfigured, streamIframeUrl, streamThumbnailUrl } from "@/lib/media";
+import { PageHeader, pageContainerStyle } from "@/components/PageHeader";
 
 type Filter = "todos" | "vlogs" | "shorts" | "tutoriais";
 
@@ -294,20 +295,13 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
   );
 
   return (
-    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
+    <div style={pageContainerStyle}>
 
-      {/* PAGE HEADER */}
-      <div style={{ marginBottom: "36px" }}>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", letterSpacing: "0.18em", color: ACCENT, marginBottom: "12px" }}>
-          02 — VLOGS
-        </div>
-        <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "42px", lineHeight: 1.06, letterSpacing: "-0.03em", color: "#f4f4f3", margin: "0 0 10px" }}>
-          Vídeos
-        </h1>
-        <p style={{ fontFamily: "'Hanken Grotesk', sans-serif", fontSize: "16px", lineHeight: 1.6, color: "#9a9aa0", margin: 0 }}>
-          Vlogs de viagem, shorts do dia a dia e tutoriais Android — em ordem cronológica inversa.
-        </p>
-      </div>
+      <PageHeader
+        kicker="02 — VLOGS"
+        title="Vídeos"
+        subtitle="Vlogs de viagem, shorts do dia a dia e tutoriais Android — em ordem cronológica inversa."
+      />
 
       {/* FILTER CHIPS */}
       <div style={{ display: "flex", gap: "8px", marginBottom: "44px" }}>

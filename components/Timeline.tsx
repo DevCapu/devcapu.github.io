@@ -9,6 +9,7 @@ import type { VlogMeta } from "@/lib/vlogs";
 import type { Project } from "@/content/projects";
 import { Slideshow } from "@/components/Slideshow";
 import { features } from "@/lib/features";
+import { PageHeader, pageContainerStyle } from "@/components/PageHeader";
 
 function VideoModal({ streamId, title, vertical = false, onClose }: {
   streamId: string;
@@ -173,9 +174,7 @@ export function Timeline({ posts, photos, vlogs, projects }: TimelineProps) {
   });
 
   return (
-    <div
-      style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}
-    >
+    <div style={pageContainerStyle}>
       {playingVlog && playingVlog.streamId && (
         <VideoModal
           streamId={playingVlog.streamId}
@@ -194,32 +193,11 @@ export function Timeline({ posts, photos, vlogs, projects }: TimelineProps) {
           onGoto={(i) => setSlideshow((s) => s ? { ...s, index: i } : s)}
         />
       )}
-      <h1
-        className="font-grotesk"
-        style={{
-          fontWeight: 600,
-          fontSize: "44px",
-          lineHeight: 1.08,
-          letterSpacing: "-0.03em",
-          color: "#f4f4f3",
-          margin: "0 0 18px",
-        }}
-      >
-        Um diário entre commits e fronteiras.
-      </h1>
-      <p
-        className="font-hanken"
-        style={{
-          fontSize: "17px",
-          lineHeight: 1.6,
-          color: "#9a9aa0",
-          margin: "0 0 30px",
-          maxWidth: "600px",
-        }}
-      >
-        Aqui eu junto fotos de viagem, vídeos, textos e os apps que construo,
-        num lugar só.
-      </p>
+      <PageHeader
+        kicker="00 — INÍCIO"
+        title="Um diário entre commits e fronteiras."
+        subtitle="Aqui eu junto fotos de viagem, vídeos, textos e os apps que construo, num lugar só."
+      />
 
       <div
         style={{ display: "flex", gap: "9px", flexWrap: "wrap" }}

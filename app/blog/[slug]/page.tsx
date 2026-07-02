@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { BackLink, pageContainerStyle, pageTitleStyle } from "@/components/PageHeader";
 
 interface Props {
   params: { slug: string };
@@ -23,34 +24,12 @@ export default async function PostPage({ params }: Props) {
   const post = await getPostBySlug(params.slug);
 
   return (
-    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
-      <Link
-        href="/blog"
-        className="font-mono"
-        style={{
-          fontSize: "11px",
-          color: "#9a9aa0",
-          textDecoration: "none",
-          marginBottom: "32px",
-          display: "inline-block",
-        }}
-      >
-        ← textos
-      </Link>
+    <div style={pageContainerStyle}>
+      <BackLink href="/blog">← textos</BackLink>
 
       <article>
         <header style={{ marginBottom: "34px" }}>
-          <h1
-            className="font-grotesk"
-            style={{
-              fontWeight: 600,
-              fontSize: "36px",
-              lineHeight: 1.1,
-              letterSpacing: "-0.03em",
-              color: "#f4f4f3",
-              margin: "0 0 14px",
-            }}
-          >
+          <h1 className="font-grotesk" style={pageTitleStyle}>
             {post.title}
           </h1>
           <div

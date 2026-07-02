@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { PostMeta } from "@/lib/posts";
+import { PageHeader, pageContainerStyle } from "@/components/PageHeader";
 
 type Filter = "todos" | "aqui" | "externos";
 
@@ -54,20 +55,13 @@ export function TextosClient({ posts }: { posts: PostMeta[] }) {
   }
 
   return (
-    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
+    <div style={pageContainerStyle}>
 
-      {/* PAGE HEADER */}
-      <div style={{ marginBottom: "34px" }}>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", letterSpacing: "0.18em", color: ACCENT, marginBottom: "12px" }}>
-          03 — TEXTOS
-        </div>
-        <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "42px", lineHeight: 1.06, letterSpacing: "-0.03em", color: "#f4f4f3", margin: "0 0 10px" }}>
-          Textos
-        </h1>
-        <p style={{ fontFamily: "'Hanken Grotesk', sans-serif", fontSize: "16px", lineHeight: 1.6, color: "#9a9aa0", margin: 0, maxWidth: "560px" }}>
-          Aqui moram as coisas que escrevi, sejam pensamentos, artigos técnicos ou um poema.
-        </p>
-      </div>
+      <PageHeader
+        kicker="03 — TEXTOS"
+        title="Textos"
+        subtitle="Aqui moram as coisas que escrevi, sejam pensamentos, artigos técnicos ou um poema."
+      />
 
       {/* FILTER CHIPS */}
       <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>

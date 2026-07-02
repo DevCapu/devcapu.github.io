@@ -1,7 +1,7 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllTags, getPostsByTag } from "@/lib/posts";
 import { PostCard } from "@/components/PostCard";
+import { BackLink, pageContainerStyle, pageTitleStyle } from "@/components/PageHeader";
 
 interface Props {
   params: { tag: string };
@@ -23,34 +23,12 @@ export default function TagPage({ params }: Props) {
   const posts = getPostsByTag(params.tag);
 
   return (
-    <div style={{ maxWidth: "820px", margin: "0 auto", padding: "64px 40px 88px" }}>
-      <Link
-        href="/blog"
-        className="font-mono"
-        style={{
-          fontSize: "11px",
-          color: "#9a9aa0",
-          textDecoration: "none",
-          marginBottom: "32px",
-          display: "inline-block",
-        }}
-      >
-        ← textos
-      </Link>
+    <div style={pageContainerStyle}>
+      <BackLink href="/blog">← textos</BackLink>
 
       {/* Header */}
       <div style={{ marginBottom: "34px" }}>
-        <h1
-          className="font-grotesk"
-          style={{
-            fontWeight: 600,
-            fontSize: "42px",
-            lineHeight: 1.06,
-            letterSpacing: "-0.03em",
-            color: "#f4f4f3",
-            margin: "0 0 10px",
-          }}
-        >
+        <h1 className="font-grotesk" style={pageTitleStyle}>
           #{params.tag}
         </h1>
         <p
