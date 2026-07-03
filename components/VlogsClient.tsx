@@ -27,6 +27,7 @@ function posterFor(v: VlogMeta): string | undefined {
 
 function chipStyle(active: boolean): React.CSSProperties {
   const base: React.CSSProperties = {
+    flexShrink: 0,
     padding: "7px 15px",
     borderRadius: "999px",
     cursor: "pointer",
@@ -242,7 +243,7 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
 
   // Card vertical (short), usado na bento e na grade de shorts.
   const shortCard = (v: VlogMeta) => (
-    <div key={v.id} style={{ gridColumn: "span 1" }}>
+    <div key={v.id}>
       <Thumb ratio="9/16" bg={v.bg} poster={posterFor(v)} badge="short" duration={v.duration} playSize={40} playIcon={11} xs onClick={isPlayable(v) ? play(v) : undefined} />
       <div style={{ marginTop: "11px" }}>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", color: "#454548", marginBottom: "5px" }}>{formatDate(v.date)}</div>
@@ -255,7 +256,7 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
 
   // Card horizontal compacto (usado na bento para vlog/tutorial 3-col).
   const bentoWideCard = (v: VlogMeta) => (
-    <div key={v.id} style={{ gridColumn: "span 3" }}>
+    <div key={v.id} className="lg:col-span-3">
       <Thumb ratio="16/9" bg={v.bg} poster={posterFor(v)} badge={v.type} duration={v.duration} onClick={isPlayable(v) ? play(v) : undefined} />
       <div style={{ marginTop: "11px" }}>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", color: "#454548", marginBottom: "5px" }}>{formatDate(v.date)}</div>
@@ -275,8 +276,8 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
   const wideListCard = (v: VlogMeta) => (
     <div key={v.id}>
       <Thumb ratio="16/9" bg={v.bg} poster={posterFor(v)} badge={v.type} duration={v.duration} playSize={64} playIcon={18} onClick={isPlayable(v) ? play(v) : undefined} />
-      <div style={{ marginTop: "16px", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "28px" }}>
-        <div style={{ flex: 1 }}>
+      <div style={{ marginTop: "16px", display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: "16px" }}>
+        <div style={{ flex: 1, minWidth: "200px" }}>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", color: "#454548", marginBottom: "7px" }}>{formatDate(v.date)}</div>
           <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "22px", letterSpacing: "-0.02em", color: "#f4f4f3", margin: "0 0 8px", lineHeight: 1.15 }}>
             {v.title}
@@ -304,7 +305,7 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
       />
 
       {/* FILTER CHIPS */}
-      <div style={{ display: "flex", gap: "8px", marginBottom: "44px" }}>
+      <div className="chip-row" style={{ gap: "8px", marginBottom: "44px", paddingBottom: "2px" }}>
         <span style={chipStyle(filter === "todos")} onClick={() => setFilter("todos")}>Todos</span>
         {vlogList.length > 0 && <span style={chipStyle(filter === "vlogs")} onClick={() => setFilter("vlogs")}>Vlogs</span>}
         {shortList.length > 0 && <span style={chipStyle(filter === "shorts")} onClick={() => setFilter("shorts")}>Shorts</span>}
@@ -370,7 +371,7 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
 
       {/* BENTO GRID */}
       {filter === "todos" && bentoItems.length > 0 && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "12px", alignItems: "start" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-4 items-start" style={{ gap: "12px" }}>
           {bentoItems.map(({ video, span }) =>
             span === 3 ? bentoWideCard(video) : shortCard(video)
           )}
@@ -379,7 +380,7 @@ export function VlogsClient({ vlogs }: { vlogs: VlogMeta[] }) {
 
       {/* SHORTS GRID — filtered view */}
       {filter === "shorts" && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "12px", alignItems: "start" }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 items-start" style={{ gap: "12px" }}>
           {shortList.map(shortCard)}
         </div>
       )}

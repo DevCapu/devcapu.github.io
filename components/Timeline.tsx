@@ -200,14 +200,15 @@ export function Timeline({ posts, photos, vlogs, projects }: TimelineProps) {
       />
 
       <div
-        style={{ display: "flex", gap: "9px", flexWrap: "wrap" }}
-        className="font-mono"
+        style={{ gap: "9px", paddingBottom: "2px" }}
+        className="chip-row font-mono"
       >
         {filters.map(({ id, label }) => (
           <button
             key={id}
             onClick={() => setFilter(id)}
             style={{
+              flexShrink: 0,
               padding: "7px 14px",
               borderRadius: "999px",
               fontSize: "12px",

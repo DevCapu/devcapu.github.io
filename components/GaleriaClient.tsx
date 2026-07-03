@@ -95,7 +95,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
   });
 
   return (
-    <div style={{ height: "100vh", overflow: "hidden", position: "relative" }}>
+    <div className="h-[calc(100vh-75px)] lg:h-screen" style={{ overflow: "hidden", position: "relative" }}>
 
       {/* ── GRID VIEW ── */}
       {!openAlbum && (
@@ -109,12 +109,13 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
             />
 
             {/* Filter chips */}
-            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "28px" }}>
+            <div className="chip-row" style={{ gap: "6px", marginBottom: "28px", paddingBottom: "2px" }}>
               {filters.map(({ id, label }) => (
                 <button
                   key={id}
                   onClick={() => setFilter(id)}
                   style={{
+                    flexShrink: 0,
                     padding: "5px 14px",
                     borderRadius: "999px",
                     cursor: "pointer",
@@ -138,7 +139,7 @@ export function GaleriaClient({ photos }: { photos: PhotoMeta[] }) {
                 Nenhum álbum aqui ainda.
               </div>
             ) : (
-              <div style={{ columns: 3, columnGap: "10px" }}>
+              <div className="columns-2 lg:columns-3" style={{ columnGap: "10px" }}>
                 {filtered.map((album, i) => {
                   const hasPhoto = album.photos.length > 0;
                   const cardBg: React.CSSProperties = hasPhoto

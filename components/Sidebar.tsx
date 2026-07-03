@@ -2,16 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { features } from "@/lib/features";
-
-const navLinks = [
-  { href: "/", label: "Início", index: "00" },
-  { href: "/photos", label: "Galeria", index: "01" },
-  { href: "/vlogs", label: "Vlogs", index: "02" },
-  { href: "/blog", label: "Textos", index: "03" },
-  { href: "/projects", label: "Projetos", index: "04" },
-  { href: "/about", label: "Sobre", index: "05" },
-].filter((link) => link.href !== "/vlogs" || features.vlogs);
+import { navLinks } from "@/lib/nav";
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -23,6 +14,7 @@ export function Sidebar() {
 
   return (
     <aside
+      className="hidden lg:flex"
       style={{
         width: "360px",
         flexShrink: 0,
@@ -31,7 +23,6 @@ export function Sidebar() {
         height: "100vh",
         padding: "48px 40px",
         borderRight: "1px solid rgba(255,255,255,0.08)",
-        display: "flex",
         flexDirection: "column",
       }}
     >

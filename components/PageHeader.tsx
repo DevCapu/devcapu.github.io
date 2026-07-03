@@ -10,12 +10,12 @@ import Link from "next/link";
 export const pageContainerStyle: React.CSSProperties = {
   maxWidth: "820px",
   margin: "0 auto",
-  padding: "64px 40px 88px",
+  padding: "clamp(28px, 8vw, 64px) clamp(18px, 5vw, 40px) 88px",
 };
 
 export const pageTitleStyle: React.CSSProperties = {
   fontWeight: 600,
-  fontSize: "42px",
+  fontSize: "clamp(28px, 7vw, 42px)",
   lineHeight: 1.06,
   letterSpacing: "-0.03em",
   color: "#f4f4f3",

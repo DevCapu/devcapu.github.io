@@ -42,6 +42,7 @@ export function TextosClient({ posts }: { posts: PostMeta[] }) {
 
   function chipStyle(key: Filter): React.CSSProperties {
     const base: React.CSSProperties = {
+      flexShrink: 0,
       padding: "7px 15px",
       borderRadius: "999px",
       cursor: "pointer",
@@ -64,11 +65,13 @@ export function TextosClient({ posts }: { posts: PostMeta[] }) {
       />
 
       {/* FILTER CHIPS */}
-      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
-        <span style={chipStyle("todos")} onClick={() => setFilter("todos")}>Todos</span>
-        <span style={chipStyle("aqui")} onClick={() => setFilter("aqui")}>Aqui no site</span>
-        <span style={chipStyle("externos")} onClick={() => setFilter("externos")}>Externos ↗</span>
-        <span style={{ marginLeft: "auto", fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "#5a5a60" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+        <div className="chip-row" style={{ flex: 1, minWidth: 0, gap: "8px", paddingBottom: "2px" }}>
+          <span style={chipStyle("todos")} onClick={() => setFilter("todos")}>Todos</span>
+          <span style={chipStyle("aqui")} onClick={() => setFilter("aqui")}>Aqui no site</span>
+          <span style={chipStyle("externos")} onClick={() => setFilter("externos")}>Externos ↗</span>
+        </div>
+        <span style={{ flexShrink: 0, marginLeft: "auto", fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "#5a5a60" }}>
           {countLabel}
         </span>
       </div>

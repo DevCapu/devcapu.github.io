@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
+import { MobileHeader } from "@/components/MobileHeader";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -43,7 +44,10 @@ export default function RootLayout({
       <body className="bg-[#0a0a0b] min-h-screen">
         <div className="flex min-h-screen">
           <Sidebar />
-          <main className="flex-1 min-w-0">{children}</main>
+          <div className="flex flex-1 min-w-0 flex-col">
+            <MobileHeader />
+            <main className="flex-1 min-w-0">{children}</main>
+          </div>
         </div>
       </body>
     </html>
