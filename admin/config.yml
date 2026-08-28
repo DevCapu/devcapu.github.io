@@ -1,0 +1,87 @@
+backend:
+  name: github
+  repo: devcapu/devcapu.github.io
+  branch: master
+  base_url: https://octopus.devcapu-blog.workers.dev
+  auth_endpoint: auth
+
+local_backend: true
+
+media_folder: "public/photos"
+public_folder: "/photos"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Is External", name: "isExternal", widget: "boolean", default: false, required: false }
+      - { label: "External URL", name: "externalUrl", widget: "string", required: false }
+      - { label: "Site Name", name: "siteName", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "notes"
+    label: "Notes"
+    folder: "content/notes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Last Updated", name: "lastUpdated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "photos"
+    label: "Photos"
+    folder: "content/photos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Photos", name: "photos", widget: "list", field: { label: "Photo URL/Path", name: "photo", widget: "string" } }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Tag", name: "tag", widget: "string", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "vlogs"
+    label: "Vlogs"
+    folder: "content/vlogs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["vlog", "short", "tutorial"], default: "vlog" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Duration", name: "duration", widget: "string", hint: "Formato MM:SS ou HH:MM:SS" }
+      - { label: "Stream ID", name: "streamId", widget: "string", hint: "ID do vídeo no Cloudflare Stream", required: false }
+      - { label: "Background", name: "bg", widget: "string", hint: "Gradiente CSS customizado (opcional)", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body / Description", name: "body", widget: "markdown", required: false }
+
+  - name: "projects_collection"
+    label: "Projetos"
+    files:
+      - name: "projects"
+        label: "Lista de Projetos"
+        file: "content/projects.json"
+        fields:
+          - label: "Projetos"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Tech Stack", name: "tech", widget: "list" }
+              - { label: "GitHub URL", name: "githubUrl", widget: "string", required: false }
+              - { label: "Demo URL", name: "demoUrl", widget: "string", required: false }
+              - { label: "Featured", name: "featured", widget: "boolean", default: false }
