@@ -7,10 +7,14 @@
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
+    <script>
+      // Desativa a inicialização automática do CMS ANTES de ele carregar
+      window.CMS_MANUAL_INIT = true;
+    </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
+      // Agora iniciamos nós mesmos, passando o local_backend se for localhost
       if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-        window.CMS_MANUAL_INIT = true;
         CMS.init({
           config: {
             local_backend: true,
