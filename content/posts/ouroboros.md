@@ -1,9 +1,10 @@
 ---
-title: "Ouroboros"
-date: "2018-11-06"
-tags: ["filosofia"]
-excerpt: "O eterno retorno"
-published: false
+title: Ouroboros
+date: 2018-11-06
+tags:
+  - filosofia
+excerpt: O eterno retorno
+published: true
 ---
 
 > E se um dia ou uma noite um demônio se esgueirasse em tua mais solitária solidão e te dissesse: "Esta vida, assim como tu a vives agora e como a viveste, terás de vivê-la ainda uma vez e ainda inúmeras vezes; e não haverá nela nada de novo, cada dor e cada prazer e cada pensamento e suspiro e tudo o que há de indizivelmente pequeno e de grande em tua vida há de te retornar, e tudo na mesma ordem e sequência — e do mesmo modo esta aranha e este luar entre as árvores, e do mesmo modo este instante e eu próprio. A eterna ampulheta da existência será sempre virada outra vez — e tu com ela, poeirinha da poeira!" — Não te lançarias ao chão e rangerias os dentes e amaldiçoarias o demônio que te falasse assim? Ou viveste alguma vez um instante descomunal, em que lhe responderias: "Tu és um deus, e nunca ouvi nada mais divino!"
