@@ -1,9 +1,10 @@
 ---
-title: "Exclusão"
-date: "2026-06-02"
-tags: ["meta"]
-excerpt: "Sobre as pessoas que se sentem sozinhas"
-published: false
+title: Exclusão
+date: 2026-06-02
+tags:
+  - meta
+excerpt: Sobre as pessoas que se sentem sozinhas
+published: true
 ---
 
 Queria que vocês soubessem, ou melhor, que sentissem que não estão sós. Nessa semana eu pensei em alguns de vocês,
