@@ -1,11 +1,11 @@
 backend:
   name: github
-  repo: devcapu/devcapu.github.io
+  repo: DevCapu/devcapu.github.io
   branch: master
   base_url: https://octopus.devcapu-blog.workers.dev
   auth_endpoint: auth
 
-local_backend: true
+
 
 media_folder: "public/photos"
 public_folder: "/photos"
