@@ -1,0 +1,6 @@
+name = "octopus"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+# GITHUB_CLIENT_ID e GITHUB_CLIENT_SECRET devem ser configurados no Cloudflare Dashboard ou via `wrangler secret put GITHUB_CLIENT_SECRET`

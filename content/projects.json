@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Rangão",
+    "description": "Um site de gerenciamento de dieta, baseado nos alimentos que a pessoa tem em casa",
+    "tech": ["PHP", "Laravel"],
+    "githubUrl": "https://github.com/devcapu/rangao",
+    "featured": true
+  }
+]
