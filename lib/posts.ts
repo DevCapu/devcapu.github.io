@@ -37,7 +37,7 @@ export function getAllPosts(): PostMeta[] {
       return {
         slug,
         title: data.title as string,
-        date: data.date as string,
+        date: data.date instanceof Date ? data.date.toISOString().split("T")[0] : (data.date as string),
         tags: (data.tags as string[]) ?? [],
         excerpt: data.excerpt as string,
         readingTime: stats.text,
@@ -72,7 +72,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return {
     slug,
     title: data.title as string,
-    date: data.date as string,
+    date: data.date instanceof Date ? data.date.toISOString().split("T")[0] : (data.date as string),
     tags: (data.tags as string[]) ?? [],
     excerpt: data.excerpt as string,
     readingTime: stats.text,
